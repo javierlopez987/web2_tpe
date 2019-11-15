@@ -1,8 +1,8 @@
 {include file="header.tpl"}
 
-<div class = "row">
-    <table class="table table-hover">
-    <thead class="thead-light">
+<div>
+    <table>
+    <thead>
         <tr>
             <th>Nombre</th>
             <th>Apellido</th>
@@ -18,18 +18,22 @@
             <td>{$artista->apellido}</td>
             <td>{$artista->fechanac}</td>
             <td>{$artista->ranking}</td>
+            <td>{if isset($artista->imagen)}
+                <img src="{$artista->imagen}"/>
+                {/if}
+            </td>
             <td>
-                <form action="API/artistas/edit" method="POST">
+                <form action="artistas/edit" method="POST">
                     <input type="hidden" name="id" value="{$artista->id}">
                     <button type="submit">Modificar</button>
                 </form>
-                <form action="API/artistas/delete" method="POST">
+                <form action="artistas/delete" method="POST">
                     <input type="hidden" name="id" value="{$artista->id}">
                     <button type="submit">Borrar</button>
                 </form>
             </td>
             <td>
-                <form action="API/artistas/imagen" method="GET">
+                <form action="artistas/imagen" method="GET">
                     <input type="hidden" name="id" value="{$artista->id}">
                     <button type="submit">Insertar Imagen</button>
                 </form>
@@ -37,7 +41,7 @@
         </tr>
         {/foreach}
         <tr>
-        <form action="API/artistas/create" method="post">
+        <form action="artistas/create" method="post">
             <td><input type="text" name="nombre" placeholder="Nombre"></td>
             <td><input type="text" name="apellido" placeholder="Apellido"></td>
             <td><input type="date" name="fechanac"></td>

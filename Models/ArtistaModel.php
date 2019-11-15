@@ -18,4 +18,9 @@ class ArtistaModel extends Modelo
         $sentencia = $this->db->prepare($this->query->update($this->tabla, array('nombre','apellido','fechanac','ranking')));
         $sentencia->execute($values);
     }
+
+    public function setImg($path, $id) {
+        $sentencia = $this->db->prepare('UPDATE artistas SET imagen = ? WHERE id = ?');
+        $ok = $sentencia->execute(array($path, $id));
+    }
 }

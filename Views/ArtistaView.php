@@ -34,6 +34,6 @@ class ArtistaView extends View{
     public function displayInsertImg($id) {
         $this->smarty->assign('titulo',"Insertar Imagen");
         $this->smarty->assign('id', $id);
-        $this->smarty->display('templates/API/artistaAdmInsertImg.tpl');
+        $this->smarty->display('templates/artistaAdmInsertImg.tpl');
     }
 }

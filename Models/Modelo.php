@@ -9,6 +9,7 @@ abstract class Modelo
     protected $tabla;
 
     public abstract function create($values);
+    public abstract function update($values);
     
     public function get(){
         $query = $this->db->prepare($this->query->selectAll($this->tabla)); 
@@ -24,8 +25,6 @@ abstract class Modelo
         return $result;
     }
     
-    public abstract function update($values);
-
     public function delete($id) {
         $sentencia = $this->db->prepare($this->query->delete($this->tabla));
         $sentencia->execute(array($id));

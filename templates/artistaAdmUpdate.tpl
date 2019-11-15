@@ -11,7 +11,7 @@
     </thead>
     <tbody>
         <tr>
-        <form action="API/Artistas/Edit" method="post">
+        <form action="artistas/edit" method="post">
             <td><input type="text" name="nombre" value="{$artista->nombre}"></td>
             <td><input type="text" name="apellido" value="{$artista->apellido}"></td>
             <td><input type="date" name="fechanac" value="{$artista->fechanac}"></td>

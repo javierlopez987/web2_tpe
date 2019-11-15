@@ -67,8 +67,8 @@ class ArtistaController extends Controller {
         } elseif (isset($_POST) && isset($_POST['id'])) {
             if($_FILES['img_insert']['type'] == "image/jpg" || $_FILES['img_insert']['type'] == "image/jpeg" || $_FILES['img_insert']['type'] == "image/png") {
                 $img_path = $this->uploadImage(array($_FILES, pathinfo($_FILES['img_insert']['name'], PATHINFO_EXTENSION)));
-                var_dump($img_path);die();
-                $this->model->uploadImage(array($img_path));
+                $this->model->setImg($img_path, $_POST['id']);
+                header("Location: " . BASE_ARTISTA);
             }
             else {
                 $this->view->artistaAdmInsertImg($_POST['id']);
