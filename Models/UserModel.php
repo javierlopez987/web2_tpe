@@ -16,8 +16,8 @@ class UserModel extends Modelo {
         return $password;
     }
 
-    public function getUser($value) {
-        $query = $this->db->prepare($this->query->selectByColumn($this->tabla,"user")); 
+    public function getByUser($value) {
+        $query = $this->db->prepare('SELECT * FROM usuarios WHERE user = ?'); 
         $query->execute(array($value));
         $result = $query->fetch(PDO::FETCH_OBJ);
         return $result;

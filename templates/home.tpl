@@ -1,4 +1,4 @@
-{include file="header.tpl"}
+{include file="header_adm.tpl"}
 
 <form action="artistas" method="get">
     <button type="submit">Artistas</button>

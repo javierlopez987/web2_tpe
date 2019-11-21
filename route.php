@@ -8,7 +8,7 @@ $action = $_GET["action"];
 define("BASE", 'http://'.$_SERVER["SERVER_NAME"].':'.$_SERVER["SERVER_PORT"].dirname($_SERVER["PHP_SELF"]).'/');
 define("BASE_CANCION", 'http://'.$_SERVER["SERVER_NAME"].':'.$_SERVER["SERVER_PORT"].dirname($_SERVER["PHP_SELF"]).'/cancion');
 define("BASE_ARTISTA", 'http://'.$_SERVER["SERVER_NAME"].':'.$_SERVER["SERVER_PORT"].dirname($_SERVER["PHP_SELF"]).'/artistas');
-define("BASE_LOGIN", 'http://'.$_SERVER["SERVER_NAME"].':'.$_SERVER["SERVER_PORT"].dirname($_SERVER["PHP_SELF"]).'/User/Login');
+define("BASE_LOGIN", 'http://'.$_SERVER["SERVER_NAME"].':'.$_SERVER["SERVER_PORT"].dirname($_SERVER["PHP_SELF"]).'/user/login');
 define("BASE_ADMINISTRADOR", 'http://'.$_SERVER["SERVER_NAME"].':'.$_SERVER["SERVER_PORT"].dirname($_SERVER["PHP_SELF"]).'/administrador');
 
 if($action == ''){
@@ -48,14 +48,14 @@ if($action == ''){
         } else {
             $artistaController->index();
         }
-    } elseif ($partesURL[0] == "User") {
+    } elseif ($partesURL[0] == "user") {
         $userController = new UserController();
         if((count($partesURL) > 1) && ($partesURL[1] != "")) {
-            if($partesURL[1] == "Register") {
+            if($partesURL[1] == "register") {
                 $userController->registracion();
-            } elseif($partesURL[1] == "Login") {
+            } elseif($partesURL[1] == "login") {
                 $userController->login();
-            } elseif($partesURL[1] == "Logout") {
+            } elseif($partesURL[1] == "logout") {
                 $userController->logout();
             }
         } else {

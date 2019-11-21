@@ -15,5 +15,4 @@ class UserView extends View{
         $this->smarty->assign('titulo',"Bienvenidos");
         $this->smarty->display('templates/userRegister.tpl');
     }
-
 }

@@ -1,13 +1,13 @@
 {include file="header.tpl"}
 
-<form action="User/Register" method="POST">
+<form action="user/register" method="POST">
   <div>
       <label>Email</label>
       <input type="email" name="user" placeholder="ejemplo@servidor">
   </div>
   <div>
       <label>Password</label>
-      <input type="password" class="form-control" name="opass" placeholder="Password">
+      <input type="password" name="opass" placeholder="Password">
   </div>
   <div>
       <label>Rescribir Password</label>

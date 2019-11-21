@@ -1,6 +1,6 @@
 {include file="header.tpl"}
 
-<form action="User/Login" method="POST">
+<form action="user/login" method="POST">
   <div>
       <label>Email</label>
       <input type="email" name="user" placeholder="ejemplo@servidor">

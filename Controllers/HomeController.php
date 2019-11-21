@@ -1,7 +1,7 @@
 <?php
 require_once(".\Views\HomeView.php");
 
-class HomeController extends Controller 
+class HomeController
 {
     public function __construct()
     {

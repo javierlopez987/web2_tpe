@@ -13,7 +13,7 @@ class UserController extends Controller
     public function login(){
         if(isset($_POST['user']) && isset($_POST['opass'])) {
             if($_POST['user'] != null) {
-                $user = $this->model->getUser($_POST['user']);
+                $user = $this->model->getByUser($_POST['user']);
                 if ($user != null && password_verify($_POST['opass'], $user->password)){
                     Session::getInstance();
                     $_SESSION['user'] = $user->user;
@@ -34,15 +34,16 @@ class UserController extends Controller
     public function logout(){
         Session::getInstance();
         session_destroy();
-        $this->view->loginView();
+        header("Location: " . BASE_LOGIN);
     }
     
     public function registracion() {
-        if(isset($_POST['user']) && isset($_POST['opass']) && isset($_POST['rpass'])) {
+        if(isset($_POST['user']) && $_POST['opass'] == $_POST['rpass']) {
             if(($_POST['user'])!= null && $_POST['opass'] != "" && ($_POST['opass'] == $_POST['rpass'])) {
                 $user = $this->model->getUser($_POST['user']);
-                if ($user !=null && !($_POST['user'] == $user->user)) {
+                if ($user != null && $_POST['user'] != $user->user) {
                     $pass = password_hash($_POST['opass'], PASSWORD_DEFAULT);
+                    var_dump($pass);die();
                     $this->model->create(array($_POST['user'], $pass));
                     Session::getInstance();
                     header("Location: " . BASE_ADMINISTRADOR);
