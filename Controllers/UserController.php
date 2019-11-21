@@ -44,7 +44,8 @@ class UserController extends Controller
                 if ($user !=null && !($_POST['user'] == $user->user)) {
                     $pass = password_hash($_POST['opass'], PASSWORD_DEFAULT);
                     $this->model->create(array($_POST['user'], $pass));
-                    $this->view->loginView();
+                    Session::getInstance();
+                    header("Location: " . BASE_ADMINISTRADOR);
                 } else {
                     $this->view->loginView();
                 }
