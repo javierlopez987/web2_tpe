@@ -44,6 +44,8 @@ if($action == ''){
                 $artistaController->update();
             } elseif($partesURL[1] == "imagen") {
                 $artistaController->insertImg();
+            } elseif($partesURL[1] == "get") {
+                $artistaController->show($partesURL[2]);
             }
         } else {
             $artistaController->index();

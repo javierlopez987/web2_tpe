@@ -12,7 +12,7 @@ class CancionController extends Controller{
     }
 
     public function create() {
-        $this->checkLogIn();
+        $this->checkLogin();
         if(isset($_POST) && isset($_POST['nombre']) && isset($_POST['duracion']) && isset($_POST['genero']) && isset($_POST['album']) && isset($_POST['artista']) && isset($_POST['ranking'])) {
             $this->model->create(array($_POST['nombre'], $_POST['duracion'], $_POST['genero'], $_POST['album'], $_POST['artista'], $_POST['ranking']));
         }
@@ -20,7 +20,7 @@ class CancionController extends Controller{
     }
 
     public function delete() {
-        $this->checkLogIn();
+        $this->checkLogin();
         if(isset($_POST) && isset($_POST['id'])) {
             $this->model->delete($_POST['id']);
         }
@@ -28,7 +28,7 @@ class CancionController extends Controller{
     }
 
     public function update() {
-        $this->checkLogIn();
+        $this->checkLogin();
         if(isset($_POST) && isset($_POST['id']) && isset($_POST['nombre']) && isset($_POST['duracion']) && isset($_POST['genero']) && isset($_POST['album']) && isset($_POST['artista']) && isset($_POST['ranking'])) {
             $this->model->update(array($_POST['nombre'], $_POST['duracion'], $_POST['genero'], $_POST['album'], $_POST['artista'], $_POST['ranking'], $_POST['id']));
             header("Location: " . BASE_CANCION);
@@ -39,12 +39,12 @@ class CancionController extends Controller{
     }
 
     private function findById($id) {
-        $this->checkLogIn();
+        $this->checkLogin();
         return $this->model->getByID($id);
     }
 
     public function findByColumn($column,$parameter) {
-        $this->checkLogIn();
+        $this->checkLogin();
         $obj = $this->model->findByColumn($column,$parameter);
         var_dump($obj);die;
     }

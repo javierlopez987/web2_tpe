@@ -1,15 +1,17 @@
 <?php
 require_once(".\Views\HomeView.php");
 
-class HomeController
-{
-    public function __construct()
-    {
+class HomeController {
+    private $view;
+    private $session;
+
+    public function __construct() {
         $this->view = new HomeView();
+        $this->session = new UserController();
     }
 
-    function index()
-    {
+    public function index() {
+        $this->checkLogin();
         $this->view->showIndex();
     }
 
@@ -17,7 +19,7 @@ class HomeController
         $this->view->displayMenu();
     }
 
-    public function checkLogIn() {
-        $this->view->showIndex(); 
-    }   
+    public function checkLogin() {
+        $this->session->checkLogin();
+    }
 }

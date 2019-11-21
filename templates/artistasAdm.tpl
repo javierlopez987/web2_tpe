@@ -1,4 +1,4 @@
-{include file="header.tpl"}
+{include file="header_adm.tpl"}
 
 <div>
     <table>
@@ -8,7 +8,8 @@
             <th>Apellido</th>
             <th>Nacimiento</th>
             <th>Ranking</th>
-            <th>Accion</th>
+            <th>Imagen</th>
+            <th>Acción</th>
         </tr>
     </thead>
     <tbody>
@@ -18,10 +19,9 @@
             <td>{$artista->apellido}</td>
             <td>{$artista->fechanac}</td>
             <td>{$artista->ranking}</td>
-            <td>{if isset($artista->imagen)}
+            <td>{if ($artista->imagen != "")}
                 <img src="{$artista->imagen}"/>
-                {/if}
-            </td>
+            {/if}</td>
             <td>
                 <form action="artistas/edit" method="POST">
                     <input type="hidden" name="id" value="{$artista->id}">
@@ -31,11 +31,12 @@
                     <input type="hidden" name="id" value="{$artista->id}">
                     <button type="submit">Borrar</button>
                 </form>
-            </td>
-            <td>
                 <form action="artistas/imagen" method="GET">
                     <input type="hidden" name="id" value="{$artista->id}">
                     <button type="submit">Insertar Imagen</button>
+                </form>
+                <form action="artistas/get/{$artista->id}" method="GET">
+                    <button type="submit">Ver</button>
                 </form>
             </td>
         </tr>

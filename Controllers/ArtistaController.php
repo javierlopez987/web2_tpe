@@ -13,22 +13,19 @@ class ArtistaController extends Controller {
 
     public function index()
     {
-        $this->checkLogIn();
+        $this->checkLogin();
         $artistas = $this->model->get();
-
         $this->view->showIndex($artistas);
     }
 
-    public function show($id)
-    {
-        $this->checkLogIn();
-        $artista = $this->model->findById($id);
-
+    public function show($id) {
+        $user = $this->checkLogin();
+        $artista = $this->model->getById($id);
         $this->view->showOne($artista);
     }
 
     public function create() {
-        $this->checkLogIn();
+        $this->checkLogin();
         if(isset($_POST) && isset($_POST['nombre']) && isset($_POST['apellido']) && isset($_POST['fechanac']) && isset($_POST['ranking'])) {
             $this->model->create(array($_POST['nombre'], $_POST['apellido'], $_POST['fechanac'], $_POST['ranking']));
         }
@@ -36,13 +33,13 @@ class ArtistaController extends Controller {
     }
 
     public function delete() {
-        $this->checkLogIn();
-        $this->model->delete($id);
+        $this->checkLogin();
+        $this->model->delete($_POST['id']);
         header("Location: " . BASE_ARTISTA);
     }
 
     public function update() {
-        $this->checkLogIn();
+        $this->checkLogin();
         if(isset($_POST) && isset($_POST['id']) && isset($_POST['nombre']) && isset($_POST['apellido']) && isset($_POST['fechanac']) && isset($_POST['ranking'])) {
             $this->model->update(array($_POST['nombre'], $_POST['apellido'], $_POST['fechanac'], $_POST['ranking'], $_POST['id']));
             header("Location: " . BASE_ARTISTA);
@@ -53,15 +50,16 @@ class ArtistaController extends Controller {
     }
 
     private function findById($id) {
-        $this->checkLogIn();
+        $this->checkLogin();
         return $this->model->getByID($id);
     }
 
-    public function checkLogIn() {
-        $this->session->checkLogIn();
+    public function checkLogin() {
+        return $this->session->checkLogin();
     }
 
     public function insertImg() {
+        $this->checkLogin();
         if (isset ($_GET) && isset($_GET['id'])) {
             $this->view->displayInsertImg($_GET['id']);
         } elseif (isset($_POST) && isset($_POST['id'])) {

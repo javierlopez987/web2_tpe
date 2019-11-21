@@ -9,15 +9,15 @@ class ArtistaView extends View{
     public function showIndex($artistas){
         $this->smarty->assign('titulo',"Artistas");
         $this->smarty->assign('artistas',$artistas);
-        $this->smarty->display('templates/allArtistas.tpl');
+        $this->smarty->display('templates/artistasAdm.tpl');
     }
-
+    
     public function showOne($artista){
         $this->smarty->assign('titulo',"Artista");
         $this->smarty->assign('artista',$artista);
-        $this->smarty->display('templates/Artista.tpl');
+        $this->smarty->display('templates/artistaAdm.tpl');
     }
-
+    
     public function displayUpdate($artista) {
         $this->smarty->assign('titulo',"Artista a modificar");
         $this->smarty->assign('artista',$artista);

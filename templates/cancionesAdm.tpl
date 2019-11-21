@@ -1,4 +1,4 @@
-{include file="header.tpl"}
+{include file="header_adm.tpl"}
 
     <table>
     <thead>

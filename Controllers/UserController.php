@@ -4,13 +4,12 @@ require_once("Views/UserView.php");
 
 class UserController extends Controller 
 {
-    public function __construct()
-    {
+    public function __construct() {
         $this->model = new UserModel();
         $this->view = new UserView();
     }
 
-    public function login(){
+    public function login() {
         if(isset($_POST['user']) && isset($_POST['opass'])) {
             if($_POST['user'] != null) {
                 $user = $this->model->getByUser($_POST['user']);
@@ -31,10 +30,10 @@ class UserController extends Controller
 
     }
 
-    public function logout(){
+    public function logout() {
         Session::getInstance();
         session_destroy();
-        header("Location: " . BASE_LOGIN);
+        header("Location: " . BASE);
     }
     
     public function registracion() {
@@ -58,19 +57,19 @@ class UserController extends Controller
         }
     }
 
-    public function checkLogIn(){
+    public function checkLogIn() {
         Session::getInstance();
-        
-        if(!isset($_SESSION['userId'])){
-            $this->view->loginView();
-            die();
-        }
 
-        if ( isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > 20000)) { 
+        if(!isset($_SESSION['userId'])){
+            header("Location: " . BASE);
+            die();
+        } elseif (isset($_SESSION['LAST_ACTIVITY']) && (time() - $_SESSION['LAST_ACTIVITY'] > 20000)) { 
             $this->logout();
             die();
         } 
         
         $_SESSION['LAST_ACTIVITY'] = time();
+        $usuario = $_SESSION['user'];
+        return $usuario;
     }
 }
