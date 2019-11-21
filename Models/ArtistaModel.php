@@ -19,8 +19,13 @@ class ArtistaModel extends Modelo
         $sentencia->execute($values);
     }
 
+    public function delete($id) {
+        $sentencia = $this->db->prepare('DELETE FROM ' . $this->tabla . ' WHERE id=?');
+        $sentencia->execute(array($id));
+    }
+
     public function setImg($path, $id) {
         $sentencia = $this->db->prepare('UPDATE artistas SET imagen = ? WHERE id = ?');
-        $ok = $sentencia->execute(array($path, $id));
+        $sentencia->execute(array($path, $id));
     }
 }

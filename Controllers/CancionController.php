@@ -50,6 +50,6 @@ class CancionController extends Controller{
     }
 
     public function checkLogin() {
-        $this->session->checkLogin();
+        return $this->session->checkLogin();
     }
 }
