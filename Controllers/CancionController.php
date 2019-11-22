@@ -3,10 +3,10 @@ require_once '.\Models\CancionModel.php';
 require_once '.\Views\CancionView.php';
 
 class CancionController {
-    protected $model;
-    protected $view;
-    protected $session;
-    protected $consulta;
+    private $model;
+    private $view;
+    private $session;
+    private $consulta;
 
     public function __construct() {
         $this->model = new CancionModel();

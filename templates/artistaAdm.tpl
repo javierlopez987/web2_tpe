@@ -1,26 +1,26 @@
 {include file="header_adm.tpl"}
-    <table>
-    <thead>
-        <tr>
-            <th>Nombre</th>
-            <th>Apellido</th>
-            <th>Nacimiento</th>
-            <th>Ranking</th>
-            {if ($artista->imagen != "")}
-                <th>Imagen</th>
-            {/if}
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <td>{$artista->nombre}</td>
-            <td>{$artista->apellido}</td>
-            <td>{$artista->fechanac}</td>
-            <td>{$artista->ranking}</td>
-            {if ($artista->imagen != "")}
-                <td><img src="{$artista->imagen}"/></td>
-            {/if}
-        </tr>
-    </tbody>
-    </table>
+    <section>
+        <h1>{$artista->nombre} {$artista->apellido}<h1>
+    </section>
+    <section>
+        {if ($artista->imagen != "")}
+            <img src="{$artista->imagen}"/>
+        {/if}
+    </section>
+    <section>
+        <h2>N° {$artista->ranking} en el ranking</h2>
+    </section>
+    <section>
+        <p>Fecha de nacimiento: {$artista->fechanac}<p>
+    </section>
+    <form action="artistas/edit" method="POST">
+        <input type="hidden" name="id" value="{$artista->id}">
+        <button type="submit">Modificar</button>
+    </form>
+    {if ($artista->imagen == "")}
+        <form action="artistas/imagen" method="GET">
+            <input type="hidden" name="id" value="{$artista->id}">
+            <button type="submit">Agregar Imagen</button>
+        </form>
+    {/if}
 {include file="footer.tpl"}

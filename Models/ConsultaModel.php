@@ -1,7 +1,9 @@
 <?php
-require_once("Models/Modelo.php");
+require_once("DB/Database.php");
 
 class ConsultaModel {
+    private $db;
+
     public function __construct () {
         $this->db = Database::getInstance()->getConnection();
     }

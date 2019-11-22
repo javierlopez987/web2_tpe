@@ -1,9 +1,10 @@
 <?php
-require_once('./Models/Modelo.php');
+require_once("DB/Database.php");
 
-class UserModel extends Modelo {
+class UserModel {
+    private $db;
 
-    function __construct(){
+    function __construct() {
         $this->db = Database::getInstance()->getConnection();
         $this->query = new QuerySQL();
         $this->tabla = "usuarios";

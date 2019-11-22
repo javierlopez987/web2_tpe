@@ -3,25 +3,27 @@
 <div>
     <table>
     <thead>
-        <tr>
-            <th>Nombre</th>
-            <th>Apellido</th>
-            <th>Nacimiento</th>
-            <th>Ranking</th>
-            <th>Imagen</th>
-            <th>Acción</th>
-        </tr>
     </thead>
     <tbody>
         {foreach from=$artistas item=artista}
         <tr>
+            {if ($artista->imagen != "")}
+                <td><a href="artistas/get/{$artista->id}"> <img src="{$artista->imagen}"/> </a></td>
+                <td>
+                <form action="artistas/delete" method="POST">
+                    <input type="hidden" name="id" value="{$artista->id}">
+                    <button type="submit">Eliminar Artista</button>
+                </form>
+                <form action="artistas/imagen" method="GET">
+                    <input type="hidden" name="id" value="{$artista->id}">
+                    <button type="submit">Modificar Imagen</button>
+                </form>
+            </td>
+            {else}
             <td>{$artista->nombre}</td>
             <td>{$artista->apellido}</td>
             <td>{$artista->fechanac}</td>
             <td>{$artista->ranking}</td>
-            <td>{if ($artista->imagen != "")}
-                <img src="{$artista->imagen}"/>
-            {/if}</td>
             <td>
                 <form action="artistas/edit" method="POST">
                     <input type="hidden" name="id" value="{$artista->id}">
@@ -39,6 +41,7 @@
                     <button type="submit">Ver</button>
                 </form>
             </td>
+            {/if}
         </tr>
         {/foreach}
         <tr>

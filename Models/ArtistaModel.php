@@ -1,12 +1,30 @@
 <?php 
-require_once("Models/Modelo.php");
+require_once("DB/Database.php");
+require_once("Repositories/QuerySQL.php");
 
-class ArtistaModel extends Modelo
-{
+class ArtistaModel  {
+    private $db;
+    private $query;
+    private $tabla;
+
     public function __construct () {
         $this->db = Database::getInstance()->getConnection();
         $this->query = new QuerySQL();
         $this->tabla = 'artistas';
+    }
+
+    public function get(){
+        $query = $this->db->prepare($this->query->selectAll($this->tabla)); 
+        $query->execute();
+        $result = $query->fetchAll(PDO::FETCH_OBJ);
+        return $result;
+    }
+
+    public function getByID($id) {
+        $query = $this->db->prepare($this->query->selectByID($this->tabla)); 
+        $query->execute(array($id));
+        $result = $query->fetch(PDO::FETCH_OBJ);
+        return $result;
     }
 
     public function create($values) {
@@ -20,7 +38,7 @@ class ArtistaModel extends Modelo
     }
 
     public function delete($id) {
-        $sentencia = $this->db->prepare('DELETE FROM ' . $this->tabla . ' WHERE id=?');
+        $sentencia = $this->db->prepare('DELETE FROM artistas WHERE id=?');
         $sentencia->execute(array($id));
     }
 

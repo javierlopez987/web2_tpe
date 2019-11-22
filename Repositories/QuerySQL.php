@@ -8,10 +8,6 @@ class QuerySQL
     public function selectAll($tabla) {
         return 'SELECT * FROM '. $tabla;
     }
-    
-    public function delete($tabla) {
-        return 'DELETE FROM ' . $tabla . ' WHERE id=?';
-    }
 
     public function insert($tabla, $columns) {
         $sql = "INSERT INTO ";
