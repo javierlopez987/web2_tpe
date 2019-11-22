@@ -1,26 +1,47 @@
 <?php
 require_once '.\Models\CancionModel.php';
+require_once '.\Models\ArtistaModel.php';
 require_once '.\Views\CancionView.php';
 
 class CancionController {
     private $model;
     private $view;
     private $session;
-    private $consulta;
+    private $artista;
 
     public function __construct() {
         $this->model = new CancionModel();
         $this->view = new CancionView();
-        $this->session = new UserController();
+        $this->session = new UserHelper();
+        $this->artista = new ArtistaModel();
+    }
+
+    public function getAllCanciones(){
+        $this->checkLogin();
+        $canciones = $this->getCanciones(null);
+        $artistas = $this->artista->getArtistas();
+        $this->view->display($canciones, $artistas);
+    }
+
+    public function getCanciones($artista) {
+        if($artista != "") {
+            return $this->model->getCanciones($artista);
+        } elseif ($artista == null) {
+            return $this->model->getAllCancionesConArtistas();
+        }
+    }
+
+    public function getCancionPorId($id) {
+        if($id != "") {
+            return $this->cancion->getCanciones($id);
+        } elseif ($artista == null) {
+            return $this->model->getAllCancionesConArtistas();
+        }
     }
 
     public function getVisitante() {
         $query = $this->model->get();
         $this->view->displayVisitante($query);
-    }
-
-    public function display($canciones, $artistas){
-        $this->view->display($canciones, $artistas);
     }
 
     public function create() {

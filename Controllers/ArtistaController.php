@@ -10,7 +10,7 @@ class ArtistaController {
     function __construct() {
         $this->model = new ArtistaModel();
         $this->view= new ArtistaView();
-        $this->session = new UserController();
+        $this->session = new UserHelper();
     }
 
     public function get(){

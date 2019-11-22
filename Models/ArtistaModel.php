@@ -20,6 +20,10 @@ class ArtistaModel  {
         return $result;
     }
 
+    public function getArtistas() {
+        return $this->get();
+    }
+
     public function getByID($id) {
         $query = $this->db->prepare($this->query->selectByID($this->tabla)); 
         $query->execute(array($id));

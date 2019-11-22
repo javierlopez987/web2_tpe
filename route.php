@@ -3,7 +3,6 @@ require_once 'Controllers\CancionController.php';
 require_once 'Controllers\ArtistaController.php';
 require_once 'Controllers\HomeController.php';
 require_once 'Controllers\UserController.php';
-require_once 'Controllers\ConsultaController.php';
 
 $action = $_GET["action"];
 define("BASE", 'http://'.$_SERVER["SERVER_NAME"].':'.$_SERVER["SERVER_PORT"].dirname($_SERVER["PHP_SELF"]).'/');
@@ -33,8 +32,7 @@ if($action == ''){
                 $cancionController->findByColumn($partesURL[3],$partesURL[1]);
             }
         } else {
-            $consultaController = new ConsultaController();
-            $consultaController->getAllCanciones();
+            $cancionController->getAllCanciones();
         }
     } elseif ($partesURL[0] == "artistas") {
         $artistaController = new ArtistaController();

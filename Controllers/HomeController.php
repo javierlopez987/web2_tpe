@@ -7,7 +7,7 @@ class HomeController {
 
     public function __construct() {
         $this->view = new HomeView();
-        $this->session = new UserController();
+        $this->session = new UserHelper();
     }
 
     public function displayAdmin() {

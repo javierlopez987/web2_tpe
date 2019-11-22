@@ -1,12 +1,17 @@
 <?php
 require_once("Models/UserModel.php");
 require_once("Views/UserView.php");
-require_once("Session.php");
+require_once 'UserHelper.php';
 
 class UserController {
+    private $model;
+    private $view;
+    private $session;
+
     public function __construct() {
         $this->model = new UserModel();
         $this->view = new UserView();
+        $this->session = new UserHelper();
     }
 
     public function login() {
@@ -14,9 +19,7 @@ class UserController {
             if($_POST['user'] != null) {
                 $user = $this->model->getByUser($_POST['user']);
                 if ($user != null && password_verify($_POST['opass'], $user->password)){
-                    Session::getInstance();
-                    $_SESSION['user'] = $user->user;
-                    $_SESSION['userId'] = $user->id;
+                    $this->session->login($user);
                     $this->view->showAdmin();
                 }else{
                     $this->view->registerView();
@@ -31,8 +34,7 @@ class UserController {
     }
 
     public function logout() {
-        Session::getInstance();
-        session_destroy();
+        $this->session->logout();
         header("Location: " . BASE);
     }
     
@@ -44,9 +46,7 @@ class UserController {
                     $pass = password_hash($_POST['opass'], PASSWORD_DEFAULT);
                     $this->model->create(array($_POST['user'], $pass));
                     $user = $this->model->getByUser($_POST['user']);
-                    Session::getInstance();
-                    $_SESSION['user'] = $user->user;
-                    $_SESSION['userId'] = $user->id;
+                    $this->session->login($user);
                     $this->view->showAdmin();
                 } else {
                     header("Location: " . BASE_LOGIN);

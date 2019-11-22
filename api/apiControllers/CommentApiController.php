@@ -5,32 +5,14 @@ require_once("./api/apiViews/JSONView.php");
 
 class CommentApiController extends ApiController{
   
-    public function getComments($params = null) {
-        $comments = $this->model->get();
-        $this->view->response($comments, 200);
-    }
-
     /**
-     * Obtiene un comentario dado un ID
+     * Obtiene los comentarios dado un ID de Cancion
      * 
      * $params arreglo asociativo con los parámetros del recurso
      */
-    /*
-    public function getComment($params = null) {
-        // obtiene el parametro de la ruta
-        $id = $params[':ID'];
-        
-        $comment = $this->model->getByID($id);
-        
-        if ($comment) {
-            $this->view->response($comment, 200);   
-        } else {
-            $this->view->response("No existe el comentario con el id={$id}", 404);
-        }
-    }
-    */
 
     public function getCommentsbyCancion($params = null) {
+        //var_dump($params[':ID']);die();
         // obtiene el parametro de la ruta
         $id = $params[':ID'];
         
