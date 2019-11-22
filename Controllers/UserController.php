@@ -17,7 +17,7 @@ class UserController {
                     Session::getInstance();
                     $_SESSION['user'] = $user->user;
                     $_SESSION['userId'] = $user->id;
-                    $this->view->goHome();
+                    $this->view->showAdmin();
                 }else{
                     $this->view->registerView();
                 }
@@ -39,18 +39,20 @@ class UserController {
     public function registracion() {
         if(isset($_POST['user']) && $_POST['opass'] == $_POST['rpass']) {
             if(($_POST['user'])!= null && $_POST['opass'] != "" && ($_POST['opass'] == $_POST['rpass'])) {
-                $user = $this->model->getUser($_POST['user']);
-                if ($user != null && $_POST['user'] != $user->user) {
+                $user = $this->model->getByUser($_POST['user']);
+                if (!$user) {
                     $pass = password_hash($_POST['opass'], PASSWORD_DEFAULT);
-                    var_dump($pass);die();
                     $this->model->create(array($_POST['user'], $pass));
+                    $user = $this->model->getByUser($_POST['user']);
                     Session::getInstance();
-                    header("Location: " . BASE_ADMINISTRADOR);
+                    $_SESSION['user'] = $user->user;
+                    $_SESSION['userId'] = $user->id;
+                    $this->view->showAdmin();
                 } else {
-                    $this->view->loginView();
+                    header("Location: " . BASE_LOGIN);
                 }
             } else {
-                $this->view->registerView();
+                header("Location: " . BASE_REGISTRACION);
             }
         } else {
             $this->view->registerView();

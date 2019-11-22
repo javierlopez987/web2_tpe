@@ -9,8 +9,8 @@ class View {
         $this->smarty->assign('BASE',BASE);
     }
 
-    public function goHome() {
-        $this->smarty->assign('titulo',"Bienvenido");
+    public function showAdmin(){
+        $this->smarty->assign('titulo',"Bienvenido Administador");
         $this->smarty->display('templates/home.tpl');
     }
 }

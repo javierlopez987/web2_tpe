@@ -25,7 +25,7 @@ class UserModel {
     }
 
     public function create($values) {
-        $query = $this->db->prepare($this->query->insert($this->tabla, array("user", "password")));
+        $query = $this->db->prepare("INSERT INTO usuarios (user, password) VALUES (?, ?)");
         $query->execute($values);
     }
 
