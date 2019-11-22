@@ -2,13 +2,29 @@
 require_once 'Controller.php';
 require_once '.\Models\CancionModel.php';
 require_once '.\Views\CancionView.php';
+require_once 'ConsultaController.php';
 
 class CancionController extends Controller{
+    private $consulta;
 
-    function __construct() {
+    public function __construct() {
         $this->model = new CancionModel();
         $this->view = new CancionView();
         $this->session = new UserController();
+        $this->consulta = new ConsultaController();
+    }
+
+    public function get(){
+        $this->checkLogin();
+        $canciones = $this->model->get();
+        $this->view->display($canciones);
+    }
+
+    public function getAllCanciones(){
+        $this->checkLogin();
+        $canciones = $this->consulta->getCanciones(null);
+        //var_dump($canciones);die();
+        $this->view->display($canciones);
     }
 
     public function create() {
@@ -46,7 +62,6 @@ class CancionController extends Controller{
     public function findByColumn($column,$parameter) {
         $this->checkLogin();
         $obj = $this->model->findByColumn($column,$parameter);
-        var_dump($obj);die;
     }
 
     public function checkLogin() {

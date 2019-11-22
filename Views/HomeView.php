@@ -7,14 +7,14 @@ class HomeView extends View{
         parent::__construct();
     }
 
-    public function showIndex(){
+    public function showAdmin(){
         $this->smarty->assign('titulo',"Bienvenido Administador");
         $this->smarty->display('templates/home.tpl');
     }
 
-    public function displayMenu() {
+    public function showGuest() {
         $this->smarty->assign('titulo',"Bienvenidos");
-        $this->smarty->display('templates/menu.tpl');
+        $this->smarty->display('templates/menuGuest.tpl');
     }
 
 }

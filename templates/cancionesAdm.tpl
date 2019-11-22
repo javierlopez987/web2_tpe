@@ -15,11 +15,17 @@
     <tbody>
         {foreach from=$canciones item=cancion}
         <tr>
-            <td>{$cancion->nombre}</td>
+            <td>{$cancion->cancion}</td>
             <td>{$cancion->duracion}</td>
             <td>{$cancion->genero}</td>
             <td>{$cancion->album}</td>
-            <td>{$cancion->id_artista}</td>
+            <td>
+                {if ($cancion->imagen != "")}
+                <img src='{$cancion->imagen}' />
+                {else}
+                {$cancion->artista} {$cancion->apellido}
+                {/if}
+            </td>
             <td>{$cancion->ranking}</td>
             <td>
                 <form action="cancion/delete" method="post">

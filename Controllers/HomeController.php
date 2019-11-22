@@ -10,13 +10,13 @@ class HomeController {
         $this->session = new UserController();
     }
 
-    public function index() {
+    public function displayAdmin() {
         $this->checkLogin();
-        $this->view->showIndex();
+        $this->view->showAdmin();
     }
 
-    public function getMenu() {
-        $this->view->displayMenu();
+    public function displayGuest() {
+        $this->view->showGuest();
     }
 
     public function checkLogin() {

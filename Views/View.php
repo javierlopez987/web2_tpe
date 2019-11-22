@@ -1,7 +1,7 @@
 <?php
 require_once('libs/Smarty.class.php');
-class View
-{
+
+class View {
     protected $smarty;
 
     public function __construct() {

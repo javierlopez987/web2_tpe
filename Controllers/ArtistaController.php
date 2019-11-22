@@ -11,14 +11,13 @@ class ArtistaController extends Controller {
         $this->session = new UserController();
     }
 
-    public function index()
-    {
+    public function index() {
         $this->checkLogin();
         $artistas = $this->model->get();
         $this->view->showIndex($artistas);
     }
 
-    public function show($id) {
+    public function displayArtista($id) {
         $user = $this->checkLogin();
         $artista = $this->model->getById($id);
         $this->view->showOne($artista);

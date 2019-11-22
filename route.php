@@ -13,7 +13,7 @@ define("BASE_ADMINISTRADOR", 'http://'.$_SERVER["SERVER_NAME"].':'.$_SERVER["SER
 
 if($action == ''){
     $inivitadoController = new HomeController();
-    $inivitadoController->getMenu();
+    $inivitadoController->displayGuest();
 }else{
     $partesURL = explode("/", $action);
     if($partesURL[0] == "cancion") {
@@ -31,7 +31,7 @@ if($action == ''){
                 $cancionController->findByColumn($partesURL[3],$partesURL[1]);
             }
         } else {
-            $cancionController->get();
+            $cancionController->getAllCanciones();
         }
     } elseif ($partesURL[0] == "artistas") {
         $artistaController = new ArtistaController();
@@ -45,7 +45,7 @@ if($action == ''){
             } elseif($partesURL[1] == "imagen") {
                 $artistaController->insertImg();
             } elseif($partesURL[1] == "get") {
-                $artistaController->show($partesURL[2]);
+                $artistaController->displayArtista($partesURL[2]);
             }
         } else {
             $artistaController->index();
@@ -65,7 +65,7 @@ if($action == ''){
         }
     } elseif ($partesURL[0] == "administrador") {
         $homeController = new HomeController();
-        $homeController->index();
+        $homeController->displayAdmin();
     } elseif ($partesURL[0] == "visitante") {
         if((count($partesURL) > 1) && ($partesURL[1] != "")) {
             if($partesURL[1] == "cancion") {
@@ -77,7 +77,7 @@ if($action == ''){
             } 
         } else {
             $inivitadoController = new HomeController();
-            $inivitadoController->getMenu();
+            $inivitadoController->displayGuest();
         }
     }
 }
