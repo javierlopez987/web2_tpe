@@ -26,10 +26,8 @@ if($action == ''){
                 $cancionController->delete();
             } elseif($partesURL[1] == "update") {
                 $cancionController->update();
-            } elseif($partesURL[1] == "findId") {
-                $cancionController->findById($partesURL[1]);
-            } elseif($partesURL[1] == "findColumn") {
-                $cancionController->findByColumn($partesURL[3],$partesURL[1]);
+            } elseif($partesURL[1] == "get") {
+                $cancionController->displayCancion($partesURL[2]);
             }
         } else {
             $cancionController->getAllCanciones();

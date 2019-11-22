@@ -29,7 +29,6 @@ class ArtistaController {
     }
 
     public function displayArtista($id) {
-        $user = $this->checkLogin();
         $artista = $this->model->getById($id);
         $this->view->showOne($artista);
     }

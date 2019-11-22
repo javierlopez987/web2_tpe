@@ -40,16 +40,17 @@ class CancionModel {
     }
 
     public function getAllCancionesConArtistas() {
-        $sentencia = $this->db->prepare('SELECT *, canciones.nombre AS cancion, artistas.nombre AS artista, canciones.id AS cancion_id FROM canciones JOIN artistas ON canciones.id_artista = artistas.id');
+        $sentencia = $this->db->prepare('SELECT *, canciones.nombre AS cancion, artistas.nombre AS artista, canciones.id AS cancion_id, canciones.ranking AS ranking_cancion FROM canciones JOIN artistas ON canciones.id_artista = artistas.id');
         $sentencia->execute();
         $result = $sentencia->fetchAll(PDO::FETCH_OBJ);
         return $result;
     }
 
     public function getCancionPorId($id) {
-        $sentencia = $this->db->prepare('SELECT *, canciones.nombre AS cancion, artistas.nombre AS artista, canciones.id AS cancion_id FROM canciones JOIN artistas ON canciones.id_artista = artistas.id WHERE cancion_id = ?');
+        $sentencia = $this->db->prepare('SELECT *, canciones.nombre AS cancion, artistas.nombre AS artista, canciones.id AS cancion_id, canciones.ranking AS ranking_cancion FROM canciones JOIN artistas ON canciones.id_artista = artistas.id WHERE canciones.id = ?');
         $sentencia->execute(array($id));
         $result = $sentencia->fetch(PDO::FETCH_OBJ);
+        //var_dump($result);die();
         return $result;
     }
 }

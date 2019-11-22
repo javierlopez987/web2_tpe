@@ -26,4 +26,10 @@ class CancionView extends View {
         $this->smarty->assign('canciones',$canciones);
         $this->smarty->display('templates/canciones.tpl');
     }
+
+    public function showOne($cancion){
+        $this->smarty->assign('titulo',"Canción");
+        $this->smarty->assign('cancion',$cancion);
+        $this->smarty->display('templates/cancion.tpl');
+    }
 }

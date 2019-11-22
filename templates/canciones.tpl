@@ -19,6 +19,11 @@
             <td>{$cancion->album}</td>
             <td>{$cancion->id_artista}</td>
             <td>{$cancion->ranking}</td>
+            <td>
+                <form action="cancion/get/{$cancion->id}" method="GET">
+                    <button type="submit">Ver</button>
+                </form>
+            </td>
         </tr>
         {/foreach}
     </tbody>

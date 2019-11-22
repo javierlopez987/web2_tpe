@@ -34,9 +34,14 @@ class CancionController {
     public function getCancionPorId($id) {
         if($id != "") {
             return $this->cancion->getCanciones($id);
-        } elseif ($artista == null) {
+        } elseif ($id == null) {
             return $this->model->getAllCancionesConArtistas();
         }
+    }
+
+    public function displayCancion($id) {
+        $cancion = $this->model->getCancionPorId($id);
+        $this->view->showOne($cancion);
     }
 
     public function getVisitante() {
