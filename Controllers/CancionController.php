@@ -1,30 +1,26 @@
 <?php
-require_once 'Controller.php';
 require_once '.\Models\CancionModel.php';
 require_once '.\Views\CancionView.php';
-require_once 'ConsultaController.php';
 
-class CancionController extends Controller{
-    private $consulta;
+class CancionController {
+    protected $model;
+    protected $view;
+    protected $session;
+    protected $consulta;
 
     public function __construct() {
         $this->model = new CancionModel();
         $this->view = new CancionView();
         $this->session = new UserController();
-        $this->consulta = new ConsultaController();
     }
 
-    public function get(){
-        $this->checkLogin();
-        $canciones = $this->model->get();
-        $this->view->display($canciones);
+    public function getVisitante() {
+        $query = $this->model->get();
+        $this->view->displayVisitante($query);
     }
 
-    public function getAllCanciones(){
-        $this->checkLogin();
-        $canciones = $this->consulta->getCanciones(null);
-        //var_dump($canciones);die();
-        $this->view->display($canciones);
+    public function display($canciones, $artistas){
+        $this->view->display($canciones, $artistas);
     }
 
     public function create() {

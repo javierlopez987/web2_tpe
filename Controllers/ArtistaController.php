@@ -1,14 +1,25 @@
 <?php
-require_once 'Controller.php';
 require_once '.\Models\ArtistaModel.php';
 require_once '.\Views\ArtistaView.php';
 
-class ArtistaController extends Controller {
+class ArtistaController {
+    protected $model;
+    protected $view;
+    protected $session;
 
     function __construct() {
         $this->model = new ArtistaModel();
         $this->view= new ArtistaView();
         $this->session = new UserController();
+    }
+
+    public function get(){
+        return $this->model->get();
+    }
+
+    public function getVisitante() {
+        $query = $this->model->get();
+        $this->view->displayVisitante($query);
     }
 
     public function index() {

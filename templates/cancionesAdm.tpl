@@ -29,11 +29,11 @@
             <td>{$cancion->ranking}</td>
             <td>
                 <form action="cancion/delete" method="post">
-                    <input type="hidden" name="id" value="{$cancion->id}">
+                    <input type="hidden" name="id" value="{$cancion->cancion_id}">
                     <button type="submit">Delete</button>
                 </form>
                 <form action="cancion/update" method="post">
-                    <input type="hidden" name="id" value="{$cancion->id}">
+                    <input type="hidden" name="id" value="{$cancion->cancion_id}">
                     <button type="submit">Modificar</button>
                 </form>
             </td>
@@ -45,8 +45,18 @@
             <td><input type="number" name="duracion" placeholder="Duración"></td>
             <td><input type="text" name="genero" placeholder="Género"></td>
             <td><input type="text" name="album" placeholder="Álbum"></td>
-            <td><input type="text" name="artista" placeholder="Artista"></td>
-            <td><input type="text" name="ranking" placeholder="Ptos para ranking"></td>
+            <td>
+                <select name="artista">
+                    {foreach from=$artistas item=artista}
+                    <option value="{$artista->id}">{$artista->nombre} {$artista->apellido}</option>
+                    {/foreach}
+                </select>
+            </td>
+            <td>
+            <select name="ranking">
+                {html_options values=$puntajes output=$puntajes}
+            </select>
+            </td>
             <td><input type="submit" value="Agregar"></td>
         </form>
         </tr>

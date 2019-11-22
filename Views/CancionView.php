@@ -6,9 +6,11 @@ class CancionView extends View {
         parent::__construct();
     }
 
-    public function display($canciones){
+    public function display($canciones, $artistas){
         $this->smarty->assign('titulo',"Canciones");
         $this->smarty->assign('canciones',$canciones);
+        $this->smarty->assign('artistas',$artistas);
+        $this->smarty->assign('puntajes', array(1,2,3,4,5,6,7,8,9,10));
         $this->smarty->display('templates/cancionesAdm.tpl');
     }
 

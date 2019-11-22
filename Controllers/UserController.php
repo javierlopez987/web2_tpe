@@ -1,9 +1,9 @@
 <?php
 require_once("Models/UserModel.php");
 require_once("Views/UserView.php");
+require_once("Session.php");
 
-class UserController extends Controller 
-{
+class UserController {
     public function __construct() {
         $this->model = new UserModel();
         $this->view = new UserView();
