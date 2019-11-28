@@ -17,7 +17,7 @@
     <section id="comment">
     </section>
 
-    <form id="form-comment" action="insertar" method="post">
+    <form id="form-comment" resource="insertar" method="post">
         <input type="text" name="mensaje" placeholder="Comentario">
         <input type="number" name="valoracion" placeholder="Puntaje">
         <input type="hidden" name="cancion" id="idCancion" value="{$cancion->cancion_id}">

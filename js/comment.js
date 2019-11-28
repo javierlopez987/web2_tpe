@@ -1,7 +1,6 @@
 "use strict"
 
 function createCommentHTML(comment) {
-    console.log(comment);
     let element = `${comment.mensaje}: ${comment.valoracion}`;
     
     if (comment.fk_id_usuario == 1) {
@@ -30,18 +29,20 @@ function addComment(e) {
     e.preventDefault();
     
     let data = {
-        titulo:  document.querySelector("input[name=titulo]").value,
-        descripcion:  document.querySelector("input[name=descripcion]").value,
-        prioridad:  document.querySelector("input[name=prioridad]").value
+        mensaje:  document.querySelector("input[name=mensaje]").value,
+        valoracion:  document.querySelector("input[name=valoracion]").value,
+        cancion:  document.querySelector("input[name=cancion]").value,
+        user:  document.querySelector("input[name=user]").value
     }
 
-    fetch('api/tareas', {
+    fetch('api/comments', {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},       
         body: JSON.stringify(data) 
      })
      .then(response => {
-        getComments();
+        console.log(data);
+        getComments(data.cancion);
      })
      .catch(error => console.log(error));
 }

@@ -41,23 +41,20 @@ class CommentApiController extends ApiController{
     */
 
     // CommentApiController.php
-    /*
-   public function addTask($params = []) {     
-        $tarea = $this->getData(); // la obtengo del body
-
+   public function addComment($params = []) {     
+        $comment = $this->getData(); // la obtengo del body
         // inserta la tarea
-        $tareaId = $this->model->InsertarTarea($tarea->titulo, $tarea->descripcion,$tarea->prioridad, 0);
+        $commentId = $this->model->create(array($comment->mensaje, $comment->valoracion,$comment->cancion, $comment->user));
 
         // obtengo la recien creada
-        $tareaNueva = $this->model->GetTarea($tareaId);
+        $commentNuevo = $this->model->getCommentsbyCancion($commentId);
         
-        if ($tareaNueva)
-            $this->view->response($tareaNueva, 200);
+        if ($commentNuevo)
+            $this->view->response($commentNuevo, 200);
         else
-            $this->view->response("Error al insertar tarea", 500);
+            $this->view->response("Error al insertar comentario", 500);
 
     }
-    */
 
     // CommentApiController.php
     /*

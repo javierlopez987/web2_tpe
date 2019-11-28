@@ -23,6 +23,7 @@ class CommentModel {
     public function create($values) {
         $sentencia = $this->db->prepare('INSERT INTO comentarios (mensaje, valoracion, fk_id_cancion, fk_id_usuario) VALUES (?, ?, ?, ?)');
         $sentencia->execute($values);
+        return $values[2];
     }
 
     public function delete($id) {
