@@ -14,8 +14,7 @@
             <img src="{$cancion->imagen}"/>
         {/if}
     </section>
-    <section id="comment">
-    </section>
+    {include file="vue/comments.tpl"}
 
     <form id="form-comment" resource="insertar" method="post">
         <input type="text" name="mensaje" placeholder="Comentario">
