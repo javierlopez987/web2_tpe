@@ -15,7 +15,7 @@
     </section>
     <form action="artistas/edit" method="POST">
         <input type="hidden" name="id" value="{$artista->id}">
-        <button type="submit">Modificar</button>
+        <button type="submit">Modificar Datos del Artista</button>
     </form>
     {if ($artista->imagen == "")}
         <form action="artistas/imagen" method="GET">

@@ -32,18 +32,18 @@
             <td>
                 <form action="artistas/edit" method="POST">
                     <input type="hidden" name="id" value="{$artista->id}">
-                    <button type="submit">Modificar</button>
+                    <button type="submit">Modificar Artista</button>
                 </form>
                 <form action="artistas/delete" method="POST">
                     <input type="hidden" name="id" value="{$artista->id}">
-                    <button type="submit">Borrar</button>
+                    <button type="submit">Borrar Artista</button>
                 </form>
                 <form action="artistas/imagen" method="GET">
                     <input type="hidden" name="id" value="{$artista->id}">
                     <button type="submit">Insertar Imagen</button>
                 </form>
                 <form action="artistas/get/{$artista->id}" method="GET">
-                    <button type="submit">Ver</button>
+                    <button type="submit">Ver Artista</button>
                 </form>
             </td>
             {/if}
@@ -55,7 +55,7 @@
             <td><input type="text" name="apellido" placeholder="Apellido"></td>
             <td><input type="date" name="fechanac"></td>
             <td><input type="number" name="ranking" placeholder="Ranking"></td>
-            <td><input type="submit" value="Agregar"></td>
+            <td><input type="submit" value="Agregar Artista"></td>
         </form>
         </tr>
     </tbody>

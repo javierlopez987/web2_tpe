@@ -26,9 +26,8 @@ function addComment(e) {
         mensaje:  document.querySelector("input[name=mensaje]").value,
         valoracion:  document.querySelector("input[name=valoracion]").value,
         cancion:  document.querySelector("input[name=cancion]").value,
-        user:  document.querySelector("input[name=user]").value
+        user:  document.querySelector("input[name=user]").value,
     }
-
     fetch('api/comments', {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},       

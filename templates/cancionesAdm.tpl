@@ -30,14 +30,14 @@
             <td>
                 <form action="cancion/delete" method="post">
                     <input type="hidden" name="id" value="{$cancion->cancion_id}">
-                    <button type="submit">Delete</button>
+                    <button type="submit">Borrar Canción</button>
                 </form>
                 <form action="cancion/update" method="post">
                     <input type="hidden" name="id" value="{$cancion->cancion_id}">
-                    <button type="submit">Modificar</button>
+                    <button type="submit">Modificar Canción</button>
                 </form>
                 <form action="cancion/get-csr/{$cancion->cancion_id}" method="GET">
-                    <button type="submit">Ver</button>
+                    <button type="submit">Ver Detalle Canción</button>
                 </form>
                 <form action="artistas/imagen" method="GET">
                     <input type="hidden" name="id" value="{$cancion->id_artista}">
@@ -64,7 +64,7 @@
                 {html_options values=$puntajes output=$puntajes}
             </select>
             </td>
-            <td><input type="submit" value="Agregar"></td>
+            <td><input type="submit" value="Agregar Canción"></td>
         </form>
         </tr>
     </tbody>

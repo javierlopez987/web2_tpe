@@ -12,7 +12,6 @@ class CommentApiController extends ApiController{
      */
 
     public function getCommentsbyCancion($params = null) {
-        //var_dump($params[':ID']);die();
         // obtiene el parametro de la ruta
         $id = $params[':ID'];
         
@@ -21,7 +20,7 @@ class CommentApiController extends ApiController{
         if ($comment) {
             $this->view->response($comment, 200);   
         } else {
-            $this->view->response("No existe la cancion con el id={$id}", 404);
+            $this->view->response(null, 404);
         }
     }
 
@@ -44,8 +43,7 @@ class CommentApiController extends ApiController{
    public function addComment($params = []) {     
         $comment = $this->getData(); // la obtengo del body
         // inserta la tarea
-        $commentId = $this->model->create(array($comment->mensaje, $comment->valoracion,$comment->cancion, $comment->user));
-
+        $commentId = $this->model->create(array($comment->mensaje, $comment->valoracion, $comment->cancion, $comment->user));
         // obtengo la recien creada
         $commentNuevo = $this->model->getCommentsbyCancion($commentId);
         

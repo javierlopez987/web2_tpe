@@ -40,4 +40,11 @@ class UserHelper {
         }
         return $_SESSION['admin'];
     }
+
+    public function getUser() {
+        if (session_status() != PHP_SESSION_ACTIVE) {
+            Session::getInstance();
+        }
+        return $_SESSION;
+    }
 }

@@ -4,12 +4,8 @@
 
     <ul>
        <li v-for="comment in comments">
-           <span> {{ comment.mensaje }} - {{comment.valoracion}} </span>
-           <span v-if="auth">
-                <a :data-id="comment.id" class="btn-eliminar" href="#">Eliminar</a>
-           </span>
+           <span>{{ comment.mensaje }}</span>
        </li> 
     </ul>
 </section>
-
 {/literal}
