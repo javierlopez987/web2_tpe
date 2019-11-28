@@ -22,7 +22,7 @@ class UserHelper {
     public function checkLogin() {
         Session::getInstance();
         if (!isset($_SESSION['userId'])) {
-            header('Location: ' . LOGIN);
+            header('Location: ' . BASE_LOGIN);
             die();
         }       
     }
