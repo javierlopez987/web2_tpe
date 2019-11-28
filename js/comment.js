@@ -41,7 +41,6 @@ function addComment(e) {
         body: JSON.stringify(data) 
      })
      .then(response => {
-        console.log(data);
         getComments(data.cancion);
      })
      .catch(error => console.log(error));

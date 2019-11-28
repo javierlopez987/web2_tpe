@@ -33,9 +33,10 @@ class CancionView extends View {
         $this->smarty->display('templates/cancion.tpl');
     }
 
-    public function displayCancionCSR($cancion){
+    public function displayCancionCSR($cancion, $user){
         $this->smarty->assign('titulo',"Canción");
         $this->smarty->assign('cancion',$cancion);
+        $this->smarty->assign('user', $user);
         $this->smarty->display('templates/cancionCSR.tpl');
     }
 }

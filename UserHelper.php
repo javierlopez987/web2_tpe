@@ -11,6 +11,7 @@ class UserHelper {
         Session::getInstance();
         $_SESSION['userId'] = $user->id;
         $_SESSION['user'] = $user->user;
+        $_SESSION['admin'] = $user->administrador;
     }
 
     public function logout() {
@@ -31,5 +32,12 @@ class UserHelper {
             Session::getInstance();
         }
         return $_SESSION['user'];
+    }
+
+    public function getUserType() {
+        if (session_status() != PHP_SESSION_ACTIVE) {
+            Session::getInstance();
+        }
+        return $_SESSION['admin'];
     }
 }

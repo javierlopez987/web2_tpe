@@ -47,7 +47,8 @@ class CancionController {
     public function displayCancionCSR($id) {
         $this->checkLogIn();
         $cancion = $this->model->getCancionPorId($id);
-        $this->view->displayCancionCSR($cancion);
+        $user = $this->session->getLoggedUserName();
+        $this->view->displayCancionCSR($cancion, $user);
 
     }
 

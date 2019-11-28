@@ -21,7 +21,7 @@
         <input type="text" name="mensaje" placeholder="Comentario">
         <input type="number" name="valoracion" placeholder="Puntaje">
         <input type="hidden" name="cancion" id="idCancion" value="{$cancion->cancion_id}">
-        <input type="hidden" name="user" value="1">
+        <input type="hidden" name="user" value="{$user}">
         <input type="submit" value="Comentar">
     </form>
 
