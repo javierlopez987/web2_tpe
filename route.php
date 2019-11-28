@@ -28,6 +28,8 @@ if($action == ''){
                 $cancionController->update();
             } elseif($partesURL[1] == "get") {
                 $cancionController->displayCancion($partesURL[2]);
+            } elseif($partesURL[1] == "get-csr") {
+                $cancionController->displayCancionCSR($partesURL[2]);
             }
         } else {
             $cancionController->getAllCanciones();

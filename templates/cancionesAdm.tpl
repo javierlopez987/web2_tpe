@@ -36,6 +36,9 @@
                     <input type="hidden" name="id" value="{$cancion->cancion_id}">
                     <button type="submit">Modificar</button>
                 </form>
+                <form action="cancion/get-csr/{$cancion->cancion_id}" method="GET">
+                    <button type="submit">Ver</button>
+                </form>
             </td>
         </tr>
         {/foreach}

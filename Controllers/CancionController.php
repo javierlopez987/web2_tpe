@@ -44,6 +44,13 @@ class CancionController {
         $this->view->showOne($cancion);
     }
 
+    public function displayCancionCSR($id) {
+        $this->checkLogIn();
+        $cancion = $this->model->getCancionPorId($id);
+        $this->view->displayCancionCSR($cancion);
+
+    }
+
     public function getVisitante() {
         $query = $this->model->get();
         $this->view->displayVisitante($query);
