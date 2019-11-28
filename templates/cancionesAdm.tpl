@@ -39,6 +39,10 @@
                 <form action="cancion/get-csr/{$cancion->cancion_id}" method="GET">
                     <button type="submit">Ver</button>
                 </form>
+                <form action="artistas/imagen" method="GET">
+                    <input type="hidden" name="id" value="{$cancion->id_artista}">
+                    <button type="submit">Modificar Imagen del Artista</button>
+                </form>
             </td>
         </tr>
         {/foreach}

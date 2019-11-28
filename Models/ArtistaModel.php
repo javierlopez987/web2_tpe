@@ -50,4 +50,16 @@ class ArtistaModel  {
         $sentencia = $this->db->prepare('UPDATE artistas SET imagen = ? WHERE id = ?');
         $sentencia->execute(array($path, $id));
     }
+
+    public function getImg($id) {
+        $sentencia = $this->db->prepare('SELECT imagen FROM artistas WHERE id = ?');
+        $sentencia->execute(array($id));
+        $result = $sentencia->fetch(PDO::FETCH_OBJ);
+        return $result;
+    }
+
+    public function setBlankImg($id) {
+        $sentencia = $this->db->prepare('UPDATE artistas SET imagen = "" WHERE id = ?');
+        return $sentencia->execute(array($id));
+    }
 }

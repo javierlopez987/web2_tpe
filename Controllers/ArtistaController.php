@@ -74,11 +74,15 @@ class ArtistaController {
         } elseif (isset($_POST) && isset($_POST['id'])) {
             if($_FILES['img_insert']['type'] == "image/jpg" || $_FILES['img_insert']['type'] == "image/jpeg" || $_FILES['img_insert']['type'] == "image/png") {
                 $img_path = $this->uploadImage(array($_FILES, pathinfo($_FILES['img_insert']['name'], PATHINFO_EXTENSION)));
+                $imgAnterior = $this->model->getImg($_POST['id']);
+                if ($imgAnterior != null && $imgAnterior->imagen != "") {
+                    $this->deleteImgLocal($imgAnterior->imagen);
+                }
                 $this->model->setImg($img_path, $_POST['id']);
                 header("Location: " . BASE_ARTISTA);
             }
             else {
-                $this->view->artistaAdmInsertImg($_POST['id']);
+                $this->view->displayInsertImg($_POST['id']);
             }
         }
     }
@@ -89,5 +93,16 @@ class ArtistaController {
         return $target;
     }
 
+    public function deleteImgLocal($imgPath) {
+        unlink($imgPath);
+    }
+
+    public function setBlankImg() {
+        $imgAnterior = $this->model->getImg($_POST['id']);
+        if($imgAnterior != null && $imgAnterior->imagen != "" && $this->model->setBlankImg($_POST['id'])) {
+            $this->deleteImgLocal($imgAnterior->imagen);
+        }
+        header("Location: " . BASE_ARTISTA);
+    }
 }
 

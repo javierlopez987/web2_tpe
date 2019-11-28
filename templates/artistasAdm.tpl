@@ -8,6 +8,7 @@
         {foreach from=$artistas item=artista}
         <tr>
             {if ($artista->imagen != "")}
+                <td>{$artista->nombre} {$artista->apellido}</td>
                 <td><a href="artistas/get/{$artista->id}"> <img src="{$artista->imagen}"/> </a></td>
                 <td>
                 <form action="artistas/delete" method="POST">
@@ -17,6 +18,10 @@
                 <form action="artistas/imagen" method="GET">
                     <input type="hidden" name="id" value="{$artista->id}">
                     <button type="submit">Modificar Imagen</button>
+                </form>
+                <form action="artistas/imagen/blank" method="POST">
+                    <input type="hidden" name="id" value="{$artista->id}">
+                    <button type="submit">Borrar Imagen</button>
                 </form>
             </td>
             {else}

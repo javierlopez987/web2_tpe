@@ -44,7 +44,11 @@ if($action == ''){
             } elseif($partesURL[1] == "edit") {
                 $artistaController->update();
             } elseif($partesURL[1] == "imagen") {
-                $artistaController->insertImg();
+                if((count($partesURL) > 2) && $partesURL[2] == "blank") {
+                    $artistaController->setBlankImg();
+                } else {
+                    $artistaController->insertImg();
+                }
             } elseif($partesURL[1] == "get") {
                 $artistaController->displayArtista($partesURL[2]);
             }
