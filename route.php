@@ -11,6 +11,7 @@ define("BASE_ARTISTA", 'http://'.$_SERVER["SERVER_NAME"].':'.$_SERVER["SERVER_PO
 define("BASE_LOGIN", 'http://'.$_SERVER["SERVER_NAME"].':'.$_SERVER["SERVER_PORT"].dirname($_SERVER["PHP_SELF"]).'/user/login');
 define("BASE_REGISTRACION", 'http://'.$_SERVER["SERVER_NAME"].':'.$_SERVER["SERVER_PORT"].dirname($_SERVER["PHP_SELF"]).'/user/register');
 define("BASE_ADMINISTRADOR", 'http://'.$_SERVER["SERVER_NAME"].':'.$_SERVER["SERVER_PORT"].dirname($_SERVER["PHP_SELF"]).'/administrador');
+define("BASE_ADMIN", 'http://'.$_SERVER["SERVER_NAME"].':'.$_SERVER["SERVER_PORT"].dirname($_SERVER["PHP_SELF"]).'/user/admin/get');
 
 if($action == ''){
     $inivitadoController = new HomeController();
@@ -64,6 +65,14 @@ if($action == ''){
                 $userController->login();
             } elseif($partesURL[1] == "logout") {
                 $userController->logout();
+            } elseif($partesURL[1] == "admin") {
+                if((count($partesURL) > 2) && ($partesURL[2] == "get")) {
+                    $userController->getUsers();
+                } elseif ((count($partesURL) > 2) && $partesURL[2] == "set") {
+                    $userController->setUsers();
+                } elseif ((count($partesURL) > 2) && $partesURL[2] == "delete"){
+                    $userController->deleteUser($partesURL[3]);
+                }
             }
         } else {
             $userController->goHome();

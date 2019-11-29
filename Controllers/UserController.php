@@ -74,4 +74,45 @@ class UserController {
         $usuario = $_SESSION['user'];
         return $usuario;
     }
+
+    public function checkAdmin() {
+        Session::getInstance();
+
+        if(!isset($_SESSION['userId'])){
+            header("Location: " . BASE);
+            die();
+        } elseif ($this->session->getUserType() != 1) { 
+            $this->logout();
+            die();
+        } 
+        
+        $_SESSION['LAST_ACTIVITY'] = time();
+        $usuario = $_SESSION['user'];
+        return $usuario;
+    }
+
+    public function getUsers() {
+        $this->checkAdmin();
+        $users = $this->model->getUsers();
+        $this->view->displayUsers($users);
+    }
+
+    public function setUsers() {
+        if(isset($_POST)) {
+            $usuarios = $_POST;
+            foreach ($usuarios as $key => $value) {
+                $this->model->setUsers($key, $value);
+            }
+        }
+        $user = $this->session->getUser();
+        $this->session->logout();
+        $this->session->login($user);
+        $this->getUsers();
+    }
+
+    public function deleteUser($id) {
+        $this->checkAdmin();
+        $this->model->deleteUser($id);
+        header("Location: " . BASE_ADMIN);
+    }
 }

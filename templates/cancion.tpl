@@ -1,4 +1,4 @@
-{include file="header_adm.tpl"}
+{include file="header.tpl"}
     <section>
         <h1>{$cancion->cancion}<h1>
     </section>

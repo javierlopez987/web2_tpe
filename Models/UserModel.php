@@ -29,7 +29,20 @@ class UserModel {
         $query->execute($values);
     }
 
-    public function update($values) {
-        return null;
+    public function getUsers() {
+        $query = $this->db->prepare('SELECT id, user, administrador FROM usuarios');
+        $query->execute();
+        $result = $query->fetchAll(PDO::FETCH_OBJ);
+        return $result;
+    }
+
+    public function setUsers($userId, $admin) {
+        $query = $this->db->prepare("UPDATE usuarios SET administrador = ? WHERE id = ?");
+        $query->execute(array($admin, $userId));
+    }
+
+    public function deleteUser($id) {
+        $query = $this->db->prepare("DELETE FROM usuarios WHERE id=?");
+        $query->execute(array($id));
     }
 }

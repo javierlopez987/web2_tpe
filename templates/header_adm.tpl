@@ -13,5 +13,6 @@
 <nav>
     <a href="{BASE}administrador">Administrador</a>
     <a href="{BASE}user/logout">Log out</a>
+    <a href="{BASE}user/admin/get">Administrar Usuarios</a>
 </nav>
 <h1>{$titulo}</h1>
