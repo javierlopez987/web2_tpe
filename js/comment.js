@@ -54,10 +54,9 @@ function addComment(e) {
 
 function deleteComment(e) {
     e.preventDefault();
-
-
-    fetch('api/comments', {
-        method: 'POST',
+    let id = document.querySelector("#btn-borrar").value;
+    fetch('api/comments/id', {
+        method: 'DELETE',
         headers: {'Content-Type': 'application/json'},       
         body: JSON.stringify(data) 
      })

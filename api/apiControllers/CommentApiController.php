@@ -25,10 +25,9 @@ class CommentApiController extends ApiController{
     }
 
     // CommentApiController.php
-    /*
     public function deleteComment($params = []) {
         $comment_id = $params[':ID'];
-        $comment = $this->model->GetComment($comment_id);
+        $comment = $this->model->getComment($comment_id);
 
         if ($comment) {
             $this->model->deleteComment($comment_id);
@@ -37,7 +36,6 @@ class CommentApiController extends ApiController{
         else 
             $this->view->response("Comentario id=$comment_id not found", 404);
     }
-    */
 
     // CommentApiController.php
    public function addComment($params = []) {     
@@ -53,24 +51,4 @@ class CommentApiController extends ApiController{
             $this->view->response("Error al insertar comentario", 500);
 
     }
-
-    // CommentApiController.php
-    /*
-    public function updateTask($params = []) {
-        $task_id = $params[':ID'];
-        $task = $this->model->GetTarea($task_id);
-
-        if ($task) {
-            $body = $this->getData();
-            $titulo = $body->titulo;
-            $descripcion = $body->descripcion;
-            $prioridad = $body->prioridad;
-            $tarea = $this->model->ActualizarTarea($task_id, $titulo, $descripcion, $prioridad);
-            $this->view->response("Comentario id=$task_id actualizada con éxito", 200);
-        }
-        else 
-            $this->view->response("Task id=$task_id not found", 404);
-    }
-    */
-
 }

@@ -26,7 +26,7 @@ class CommentModel {
         return $values[2];
     }
 
-    public function delete($id) {
+    public function deleteComment($id) {
         $sentencia = $this->db->prepare('DELETE FROM comentarios WHERE id=?');
         $sentencia->execute(array($id));
     }
@@ -34,6 +34,13 @@ class CommentModel {
     public function update($values) {
         $sentencia = $this->db->prepare('UPDATE comentarios SET mensaje = ?, valoracion = ?, fk_id_cancion = ?, fk_id_usuario = ? WHERE id = ?');
         $sentencia->execute($values);
+    }
+
+    public function getComment($id) {
+        $query = $this->db->prepare('SELECT * FROM comentarios WHERE id = ?'); 
+        $query->execute(array($id));
+        $result = $query->fetch(PDO::FETCH_OBJ);
+        return $result;
     }
 
 }
