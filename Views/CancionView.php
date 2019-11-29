@@ -14,6 +14,13 @@ class CancionView extends View {
         $this->smarty->display('templates/cancionesAdm.tpl');
     }
 
+    public function displayCancionesNoAdm($canciones, $artistas){
+        $this->smarty->assign('titulo',"Canciones");
+        $this->smarty->assign('canciones',$canciones);
+        $this->smarty->assign('artistas',$artistas);
+        $this->smarty->display('templates/cancionesNoAdm.tpl');
+    }
+
     public function displayUpdate($cancion){
         $this->smarty->assign('titulo',"Canción a modificar");
         $this->smarty->assign('cancion',$cancion);

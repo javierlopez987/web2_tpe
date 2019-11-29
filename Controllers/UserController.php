@@ -76,19 +76,7 @@ class UserController {
     }
 
     public function checkAdmin() {
-        Session::getInstance();
-
-        if(!isset($_SESSION['userId'])){
-            header("Location: " . BASE);
-            die();
-        } elseif ($this->session->getUserType() != 1) { 
-            $this->logout();
-            die();
-        } 
-        
-        $_SESSION['LAST_ACTIVITY'] = time();
-        $usuario = $_SESSION['user'];
-        return $usuario;
+        $this->session->checkAdmin();
     }
 
     public function getUsers() {

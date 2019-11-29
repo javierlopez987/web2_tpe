@@ -10,7 +10,7 @@ class View {
     }
 
     public function showAdmin(){
-        $this->smarty->assign('titulo',"Bienvenido Administador");
+        $this->smarty->assign('titulo',"Bienvenido");
         $this->smarty->display('templates/home.tpl');
     }
 }

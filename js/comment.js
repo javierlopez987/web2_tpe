@@ -5,7 +5,8 @@ let app = new Vue({
     data: {
         subtitle: "Comentarios",
         comments: [],
-        auth: false
+        auth: false,
+        promedio: 0
     }
 })
 
@@ -13,12 +14,24 @@ function getComments(cancion) {
     fetch("api/comments/" + cancion)
     .then(response => response.json())
     .then(comments => {
+        let suma = 0;
+        let cuenta = 0;
+        for (const comment of comments) {
+            suma += parseInt(comment.valoracion);
+            cuenta++;
+        }
+        let promedio = suma/cuenta;
         app.comments = comments;
+        app.promedio = promedio;
     })
     .catch(error => console.log(error));
 }
 
+let cancion = document.querySelector("#idCancion").value;
+getComments(cancion);
+
 document.querySelector("#form-comment").addEventListener('submit', addComment);
+
 function addComment(e) {
     e.preventDefault();
     
@@ -38,9 +51,6 @@ function addComment(e) {
      })
      .catch(error => console.log(error));
 }
-
-let cancion = document.querySelector("#idCancion").value;
-getComments(cancion);
 
 function deleteComment(e) {
     e.preventDefault();

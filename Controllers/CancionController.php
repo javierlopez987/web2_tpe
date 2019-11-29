@@ -20,7 +20,11 @@ class CancionController {
         $this->checkLogin();
         $canciones = $this->getCanciones(null);
         $artistas = $this->artista->getArtistas();
-        $this->view->display($canciones, $artistas);
+        if($this->session->getUserType() == 1) {
+            $this->view->display($canciones, $artistas);
+        } else {
+            $this->view->displayCancionesNoAdm($canciones, $artistas);
+        }
     }
 
     public function getCanciones($artista) {

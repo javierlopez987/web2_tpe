@@ -8,7 +8,7 @@ class HomeView extends View{
     }
 
     public function showGuest() {
-        $this->smarty->assign('titulo',"Bienvenidos");
+        $this->smarty->assign('titulo',"Bienvenido");
         $this->smarty->display('templates/menuGuest.tpl');
     }
 

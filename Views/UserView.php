@@ -8,7 +8,7 @@ class UserView extends View{
     }
 
     public function loginView(){
-        $this->smarty->assign('titulo',"Bienvenidos");
+        $this->smarty->assign('titulo',"Bienvenido");
         $this->smarty->display('templates/userLogin.tpl');
     }
 

@@ -11,7 +11,7 @@
 </head>
 <body>
 <nav>
-    <a href="{BASE}administrador">Administrador</a>
+    <a href="{BASE}administrador">Menú</a>
     <a href="{BASE}user/logout">Log out</a>
     <a href="{BASE}user/admin/get">Administrar Usuarios</a>
 </nav>

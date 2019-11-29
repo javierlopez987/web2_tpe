@@ -47,4 +47,17 @@ class UserHelper {
         }
         return $_SESSION;
     }
+
+    public function checkAdmin() {
+        Session::getInstance();
+
+        if(!isset($_SESSION['userId'])){
+            header("Location: " . BASE);
+            die();
+        } elseif ($this->getUserType() != 1) { 
+            $this->logout();
+            header("Location: " . BASE);
+            die();
+        } 
+    }
 }

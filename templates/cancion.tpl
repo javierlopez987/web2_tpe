@@ -14,7 +14,9 @@
             <img src="{$cancion->imagen}"/>
         {/if}
     </section>
-    <section>
-        <h3>Comentarios</h3>
-    </section>
+    {include file="vue/comments.tpl"}
+    <form id="form-comment" resource="comments" method="post">
+    <input type="hidden" name="cancion" id="idCancion" value="{$cancion->cancion_id}">
+    </form>
+    <script src="js/comment.js"></script>
 {include file="footer.tpl"}
